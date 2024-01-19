@@ -60,16 +60,19 @@ android {
             minifyEnabled false
 
             ndk {
-                abiFilters 'armeabi-v7a'
+                abiFilters 'armeabi-v7a', 'x86', 'x86_64', 'arm64'
             }
+
+            
         }
         release {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             minifyEnabled true
 
             ndk {
-                abiFilters 'armeabi-v7a'
+                abiFilters 'armeabi-v7a', 'x86', 'x86_64', 'arm64'
             }
+
         }
     }
 
@@ -89,6 +92,14 @@ android {
         additionalParameters += '--set-max-idx-number=48000'
         additionalParameters += '--minimal-main-dex'
     }
+    splits{
+                abi {
+                    enable true
+                    reset()
+                    include 'armeabi-v7a', 'x86', 'x86_64', 'arm64'
+                    universalApk true
+                }
+            }
 }
 
 def releaseTime() {

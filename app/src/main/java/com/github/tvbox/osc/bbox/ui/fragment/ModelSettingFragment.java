@@ -12,6 +12,7 @@ import com.github.tvbox.osc.bbox.api.StoreApiConfig;
 import com.github.tvbox.osc.bbox.base.BaseActivity;
 import com.github.tvbox.osc.bbox.base.BaseLazyFragment;
 import com.github.tvbox.osc.bbox.bean.IJKCode;
+import com.github.tvbox.osc.bbox.bean.SourceBean;
 import com.github.tvbox.osc.bbox.constant.URL;
 import com.github.tvbox.osc.bbox.event.RefreshEvent;
 import com.github.tvbox.osc.bbox.player.thirdparty.RemoteTVBox;
@@ -56,6 +57,7 @@ public class ModelSettingFragment extends BaseLazyFragment {
     private TextView tvScale;
     private TextView tvApi;
     private TextView tvHomeApi;
+    private TextView tvHomeApi1;
     private TextView tvDns;
     private TextView tvHomeRec;
     private TextView tvHistoryNum;
@@ -96,6 +98,7 @@ public class ModelSettingFragment extends BaseLazyFragment {
         tvScale = findViewById(R.id.tvScaleType);
         tvApi = findViewById(R.id.tvApi);
         tvHomeApi = findViewById(R.id.tvHomeApi);
+        tvHomeApi1 = findViewById(R.id.tvHomeApi1);
         tvDns = findViewById(R.id.tvDns);
         tvHomeRec = findViewById(R.id.tvHomeRec);
         tvHistoryNum = findViewById(R.id.tvHistoryNum);
@@ -110,7 +113,7 @@ public class ModelSettingFragment extends BaseLazyFragment {
         tvHomeRec.setText(getHomeRecName(Hawk.get(HawkConfig.HOME_REC, 0)));
         tvHistoryNum.setText(HistoryHelper.getHistoryNumName(Hawk.get(HawkConfig.HISTORY_NUM, 0)));
         tvSearchView.setText(getSearchView(Hawk.get(HawkConfig.SEARCH_VIEW, 0)));
-        // tvHomeApi.setText(ApiConfig.get().getHomeSourceBean().getName());
+        tvHomeApi1.setText(ApiConfig.get().getHomeSourceBean().getName());
         tvHomeApi.setText(Hawk.get(HawkConfig.API_NAME, ""));
         tvScale.setText(PlayerHelper.getScaleName(Hawk.get(HawkConfig.PLAY_SCALE, 0)));
         tvPlay.setText(PlayerHelper.getPlayerName(Hawk.get(HawkConfig.PLAY_TYPE, 0)));
@@ -196,6 +199,40 @@ public class ModelSettingFragment extends BaseLazyFragment {
                 if (wp.exists())
                     wp.delete();
                 ((BaseActivity) requireActivity()).changeWallpaper(true);
+            }
+        });
+        findViewById(R.id.llHomeApi1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FastClickCheckUtil.check(v);
+                List<SourceBean> sites = ApiConfig.get().getSourceBeanList();
+                if (sites.size() > 0) {
+                    SelectDialog<SourceBean> dialog = new SelectDialog<>(mActivity);
+                    dialog.setTip("请选择首页数据源");
+                    dialog.setAdapter(new SelectDialogAdapter.SelectDialogInterface<SourceBean>() {
+                        @Override
+                        public void click(SourceBean value, int pos) {
+                            ApiConfig.get().setSourceBean(value);
+                            tvHomeApi1.setText(ApiConfig.get().getHomeSourceBean().getName());
+                        }
+
+                        @Override
+                        public String getDisplay(SourceBean val) {
+                            return val.getName();
+                        }
+                    }, new DiffUtil.ItemCallback<SourceBean>() {
+                        @Override
+                        public boolean areItemsTheSame(@NonNull @NotNull SourceBean oldItem, @NonNull @NotNull SourceBean newItem) {
+                            return oldItem == newItem;
+                        }
+
+                        @Override
+                        public boolean areContentsTheSame(@NonNull @NotNull SourceBean oldItem, @NonNull @NotNull SourceBean newItem) {
+                            return oldItem.getKey().equals(newItem.getKey());
+                        }
+                    }, sites, sites.indexOf(ApiConfig.get().getHomeSourceBean()));
+                    dialog.show();
+                }
             }
         });
         findViewById(R.id.llHomeApi).setOnClickListener( v -> {
