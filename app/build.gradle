@@ -92,14 +92,6 @@ android {
         additionalParameters += '--set-max-idx-number=48000'
         additionalParameters += '--minimal-main-dex'
     }
-    splits{
-                abi {
-                    enable true
-                    reset()
-                    include 'armeabi-v7a', 'x86', 'x86_64', 'arm64'
-                    universalApk true
-                }
-            }
 }
 
 def releaseTime() {
