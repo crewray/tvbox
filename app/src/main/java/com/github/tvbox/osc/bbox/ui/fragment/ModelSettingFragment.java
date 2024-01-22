@@ -214,6 +214,7 @@ public class ModelSettingFragment extends BaseLazyFragment {
                         public void click(SourceBean value, int pos) {
                             ApiConfig.get().setSourceBean(value);
                             tvHomeApi1.setText(ApiConfig.get().getHomeSourceBean().getName());
+                            dialog.dismiss();
                         }
 
                         @Override
