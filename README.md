@@ -1,7 +1,12 @@
 # Jade box
 
-### [竖屏版(存在问题：看不了玩偶；未解决，暂时不搞了)](https://github.com/mlabalabala/TVBoxOS-Mobile)
-### [横屏版](https://github.com/mlabalabala/box)
+### 竖屏手机版
+#### [项目地址 https://github.com/mlabalabala/TVBoxOS-Mobile](https://github.com/mlabalabala/TVBoxOS-Mobile)
+#### [源项目地址 https://github.com/XiaoRanLiu3119/TVBoxOS-Mobile](https://github.com/XiaoRanLiu3119/TVBoxOS-Mobile)
+####  [Jade_SHJ_Mob_[时间戳] 码：6111](https://bunny6111.lanzouq.com/b04whyfwf)
+### 
+### 横屏TV版
+#### [项目地址 https://github.com/mlabalabala/box](https://github.com/mlabalabala/box)
 ###
 #### 源项目
 #### https://github.com/CatVodTVOfficial/TVBoxOSC
@@ -11,7 +16,6 @@
 #### https://github.com/CatVodTVOfficial/TVBoxOSC
 #### https://github.com/q215613905/TVBoxOS
 #### https://github.com/takagen99/Box
-#### [竖屏版源项目    https://github.com/XiaoRanLiu3119/TVBoxOS-Mobile](https://github.com/XiaoRanLiu3119/TVBoxOS-Mobile)
 
 ---
 #### 数据源参考
@@ -75,5 +79,15 @@ TVBox 简易修改 多源版本 支持安卓4.4
 - 蓝奏云中LIVE版自用即可，可开机自启，直播资源来源于网络，可以自定义配置直播源（配置完需要重启应用生效）
 ### 测试可能不太够，有BUG请提issue
 ### Actions中有生成脚本
+
+## Star History
+
+<a href="https://star-history.com/#mlabalabala/box&Date">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=mlabalabala/box&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=mlabalabala/box&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=mlabalabala/box&type=Date" />
+ </picture>
+</a>
 
 
